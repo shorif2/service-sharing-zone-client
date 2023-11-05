@@ -10,6 +10,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import MyServices from "../Pages/MyServices/MyServices";
 import AddService from "../Pages/AddService/AddService";
 import MySchedules from "../Pages/MySchedules/MySchedules";
+import PrivetRouter from "./PrivetRouter";
 
   const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ import MySchedules from "../Pages/MySchedules/MySchedules";
         },
         {
         path: 'services',
-        element: <Services></Services>
+        element: <PrivetRouter><Services></Services></PrivetRouter>
         },
         {
         path: 'log-in',
@@ -47,7 +48,4 @@ import MySchedules from "../Pages/MySchedules/MySchedules";
       ]
     },
   ]);
-
-
-
 export default router;
