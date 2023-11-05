@@ -13,7 +13,7 @@ const ErrorPage = () => {
 			
 			<p className="text-2xl font-semibold md:text-3xl text-black">Sorry, we could not find this page.</p>
 			<p className="mt-4 mb-8 text-black">But do not worry, you can find plenty of other things on our homepage.</p>
-			<Link to='/' rel="noopener noreferrer" href="#" className="px-8 py-3 font-semibold rounded bg-red-500 text-gray-900">Back to homepage</Link>
+			<Link to='/' rel="noopener noreferrer" href="#" className="px-8 py-3 font-semibold rounded bg-red-500 text-white">Back to homepage</Link>
 		</div>
         
 	</div>
