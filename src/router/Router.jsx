@@ -11,11 +11,13 @@ import MyServices from "../Pages/MyServices/MyServices";
 import AddService from "../Pages/AddService/AddService";
 import MySchedules from "../Pages/MySchedules/MySchedules";
 import PrivetRouter from "./PrivetRouter";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
         path: '/',
