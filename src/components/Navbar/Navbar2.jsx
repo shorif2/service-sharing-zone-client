@@ -58,7 +58,7 @@ const Navbar2 = () => {
                 </div>
                 {/* menu for lg */}
                 <div className="navbar-center hidden lg:flex">
-                    <div className=" menu menu-horizontal flex items-center px-1 gap-4 ">
+                    <div className=" menu menu-horizontal flex items-center px-1 gap-8 ">
                         <div className="flex gap-4">
                             <Link to='/' className="font-medium " >Home</Link>
                             <Link to='/services' className="font-medium " >Services</Link>

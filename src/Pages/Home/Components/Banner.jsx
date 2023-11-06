@@ -24,7 +24,7 @@ const Banner = () => {
                             <input type="text" className="w-[300px] py-3 font-medium" placeholder="What service are you looking for?" />
                             <input type="text" className="py-3 font-medium" placeholder="Postcode" />
                         </div>
-                        <button className="bg-red-500 py-[14px] px-8 ml-2">Search</button>
+                        <button className="bg-red-500 text-white font-medium py-[14px] px-8 ml-2">Search</button>
                     </div>
                     <p className="font-medium">Popular: House Cleaning, Web Design, Personal Trainers</p>
 
