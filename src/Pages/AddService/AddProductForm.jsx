@@ -1,17 +1,43 @@
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
+import toast from "react-hot-toast";
 
 
 const AddProductForm = () => {
+    const {user} = useContext(AuthContext)
 
     const handleSubmit =(e) =>{
         e.preventDefault()
 
         const name = e.target.name.value;
+        const email = e.target.email.value;
         const url = e.target.url.value;
+        const serviceName = e.target.serviceName.value;
+        const review = e.target.review.value;
         const area = e.target.area.value;
         const price = e.target.price.value;
         const category = e.target.category.value;
         const description = e.target.description.value;
-        console.log(name,url,area, price, category, description);
+
+        const newService = {name, email, review, url, serviceName, area, price, category, description}
+        console.log(newService);
+
+        fetch('http://localhost:5000/service',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newService)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                toast.success('Product added successful ')
+            }
+        })
+
+
     }
 
     return (
@@ -33,15 +59,23 @@ const AddProductForm = () => {
                 <div className="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
-                        <input type="text" name="name"  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your name" required=""/>
+                        <input type="text" name="name" value={user.displayName} disabled  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your name" required=""/>
                     </div>
                     <div>
                         <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
-                        <input type="text" name="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your email" required=""/>
+                        <input type="text" name="email" value={user.email} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your email" required=""/>
+                    </div>
+                    <div>
+                        <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Name</label>
+                        <input type="text" name="serviceName"className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Service Name" required=""/>
                     </div>
                     <div>
                         <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Picture URL</label>
                         <input type="text" name="url"className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Service picture URL" required=""/>
+                    </div>
+                    <div>
+                        <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Review</label>
+                        <input type="text" name="review"className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Review" required=""/>
                     </div>
                     <div>
                         <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Area</label>

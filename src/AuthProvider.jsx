@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "./firebase/Firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 
@@ -8,7 +9,8 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(true)
-    console.log(user);
+    const [allService, setAllService] = useState(null)
+    console.log(allService);
 
     useEffect(()=>{
 
@@ -17,7 +19,12 @@ const AuthProvider = ({children}) => {
       })
       return ()=> observerRequest()
     },[])
-
+useEffect(()=>{
+  axios.get('http://localhost:5000/service')
+  .then(data =>{
+    setAllService(data.data);
+  })
+},[])
 
     // Create User
     const createUser = (email, password) =>{
@@ -53,7 +60,8 @@ login,
 user,
 logout,
 updateUser,
-googleSingIn
+googleSingIn,
+allService
     }
 
     return (
