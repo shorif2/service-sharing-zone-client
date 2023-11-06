@@ -27,25 +27,25 @@ const HowItWork = () => {
                 
             </div>
             <div className='flex  gap-4'> 
-                <div className="flex flex-col items-center pl-4">
+                <div className="flex flex-col items-center pl-6">
                     <img src={list} alt=""  className='w-[100px] h-[100px]'/>
                     <h3 className="text-2xl font-medium pt-4">
                         Schedule
                     </h3>
                     <p className="font-medium">
-                        Select the date and time like<br />your professional to show up 
+                        Certified Taskers comes over<br /> and done your task
                     </p>
                 </div>
                 <div className='flex items-end'>
                 <img src={arrow} alt="" className='relative w-[150px] h-[150px] scale-y-[-1] bottom-14' />
                 </div>
-                <div className='pl-4'>
+                <div className='flex flex-col pl-4 items-center text-center'>
                 <img src={discussion} alt=""  className='w-[100px] h-[100px]'/>
                     <h3 className="text-2xl font-medium pt-4">
                         Relax
                     </h3>
                     <p className="font-medium">
-                        Select the date and time like<br />your professional to show up 
+                        Your task is completed to your<br />satisfaction - guaranteed
                     </p>
                 </div>
             </div>

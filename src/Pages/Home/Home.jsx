@@ -1,4 +1,5 @@
 import Banner from "./Components/Banner";
+import Faq from "./Components/Faq";
 import HowItWork from "./Components/HowItWork";
 
 
@@ -8,6 +9,7 @@ const Home = () => {
         <div className="container mx-auto">
         <Banner></Banner>
         <HowItWork></HowItWork>
+        <Faq></Faq>
         </div>
     );
 };
