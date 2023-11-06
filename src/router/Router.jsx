@@ -13,6 +13,7 @@ import MySchedules from "../Pages/MySchedules/MySchedules";
 import PrivetRouter from "./PrivetRouter";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
+import UpdateService from "../Pages/UpdateService/UpdateService";
 
   const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
         {
           path: 'service-details',
           element: <ServiceDetails></ServiceDetails>
+        },
+        {
+          path: 'update-service',
+          element: <UpdateService></UpdateService>
         }
       ]
     },
