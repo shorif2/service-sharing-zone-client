@@ -1,8 +1,11 @@
+import AllService from "./Components/AllService";
+import SearchBox from "./Components/SearchBox";
 
 const Services = () => {
     return (
         <div>
-            <h2>This is service page</h2>
+           <SearchBox></SearchBox>
+           <AllService></AllService>
         </div>
     );
 };
