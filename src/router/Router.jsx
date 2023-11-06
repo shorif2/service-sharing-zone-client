@@ -12,6 +12,7 @@ import AddService from "../Pages/AddService/AddService";
 import MySchedules from "../Pages/MySchedules/MySchedules";
 import PrivetRouter from "./PrivetRouter";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 
   const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
         {
         path: 'my-schedules',
         element: <MySchedules></MySchedules>
+        },
+        {
+          path: 'service-details',
+          element: <ServiceDetails></ServiceDetails>
         }
       ]
     },
