@@ -27,7 +27,7 @@ import UpdateService from "../Pages/UpdateService/UpdateService";
         },
         {
         path: 'services',
-        element: <PrivetRouter><Services></Services></PrivetRouter>
+        element: <Services></Services>
         },
         {
         path: 'log-in',
