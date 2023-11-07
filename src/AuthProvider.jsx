@@ -16,6 +16,7 @@ const AuthProvider = ({children}) => {
 
       const observerRequest =  onAuthStateChanged(auth, (newUser)=>{
         setUser(newUser)
+        setLoading(false)
       })
       return ()=> observerRequest()
     },[])
@@ -28,15 +29,18 @@ useEffect(()=>{
 
     // Create User
     const createUser = (email, password) =>{
+      setLoading(true)
        return createUserWithEmailAndPassword(auth, email, password);
 
     }
     // Login
     const login = ( email, password)=>{
+      setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     // Logout
     const logout =() =>{
+      setLoading(true)
         return signOut(auth)
     }
     // Update a user's profile
@@ -50,6 +54,7 @@ useEffect(()=>{
     // Google sign in 
 
     const googleSingIn = ()=>{
+      
         const googleProvider = new GoogleAuthProvider();
 return signInWithPopup(auth, googleProvider)
     }
@@ -61,7 +66,8 @@ user,
 logout,
 updateUser,
 googleSingIn,
-allService
+allService,
+loading
     }
 
     return (

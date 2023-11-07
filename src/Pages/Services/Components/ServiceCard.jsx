@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 
 
 const ServiceCard = ({service}) => {
     // eslint-disable-next-line react/prop-types
-    const {serviceName, area, price, description, url, name} = service
+    const {_id,serviceName, area, price, description, url, name} = service
     return (
         <div className="relative flex w-full flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
@@ -37,6 +38,7 @@ const ServiceCard = ({service}) => {
               </h3>
                 </div>
               <div className="inline-block items-end">
+                        <Link to={`http://localhost:5173/service-details/${_id}`}>
                         <button
                             className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-pink-500 uppercase align-middle transition-all rounded-lg select-none hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button"
@@ -57,6 +59,7 @@ const ServiceCard = ({service}) => {
                                 ></path>
                             </svg>
                         </button>
+                        </Link>
                     </div>
                 </div>
                 </div>

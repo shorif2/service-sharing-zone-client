@@ -1,6 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 
 const Card = () => {
+const [serviceDetails, setServiceDetails] = useState([])
+    const params = useParams()
+    const {id} = params;
+    
+
+    useEffect( ()=>{
+        axios.get(`http://localhost:5000/service/${id}`)
+        .then(res => {
+            setServiceDetails(res.data)
+        })
+    },[id])
+console.log(serviceDetails,id);
+
+const {_id, serviceName} = serviceDetails
+
     return (
         <div className="flex gap-6 mt-16 mb-28">
             {/* card */}
@@ -15,12 +33,12 @@ const Card = () => {
                     </div>
                     <div>
                         <img src="https://source.unsplash.com/random/100x100/?5" alt="" className="object-cover w-full mb-4 h-full sm:h-96 dark:bg-gray-500" />
-                        <h2 className="mb-1 text-xl font-semibold">Nam cu platonem posidonium sanctus debitis te</h2>
+                        <h2 className="mb-1 text-xl font-semibold">{serviceName}</h2>
                         <p className="text-sm dark:text-gray-400">Eu qualisque aliquando mel, id lorem detraxit nec, ad elit minimum pri. Illum ipsum detracto ne cum. Mundi nemore te ius, vim ad illud atqui apeirian...</p>
                     </div>
                     <div className="flex flex-wrap justify-between">
                     <button className="self-center px-8 py-3 font-semibold rounded border  border-red-500 text-red-500">Monthly $299</button>
-                    <button className="self-center px-8 py-3 font-semibold rounded bg-red-500 text-white">Order Now</button>
+                    <Link to='/' className="self-center px-8 py-3 font-semibold rounded bg-red-500 text-white">Order Now</Link>
                         
                     </div>
                 </div>

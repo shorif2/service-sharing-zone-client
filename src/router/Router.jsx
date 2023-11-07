@@ -10,7 +10,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import MyServices from "../Pages/MyServices/MyServices";
 import AddService from "../Pages/AddService/AddService";
 import MySchedules from "../Pages/MySchedules/MySchedules";
-import PrivetRouter from "./PrivetRouter";
+// import PrivetRouter from "./PrivetRouter";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import UpdateService from "../Pages/UpdateService/UpdateService";
@@ -50,7 +50,7 @@ import UpdateService from "../Pages/UpdateService/UpdateService";
         element: <MySchedules></MySchedules>
         },
         {
-          path: 'service-details',
+          path: 'service-details/:id',
           element: <ServiceDetails></ServiceDetails>
         },
         {
