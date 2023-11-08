@@ -1,8 +1,9 @@
 
 import { useContext, useEffect, useState } from "react";
-import Ser from "./Components/Ser";
+
 import { AuthContext } from "../../AuthProvider";
 import axios from "axios";
+import AddedServiceCard from "./Components/AddedServiceCard";
 
 
 const MyServices = () => {
@@ -24,7 +25,11 @@ console.log(email);
             <h2 className="text-3xl font-medium">My Service</h2>
             </div>
             <p className="text-3xl font-medium text-center pt-20 pb-10">My all services here</p>
-            <Ser></Ser>
+
+            <div className="grid grid-cols-3 gap-4">
+            {myAddedService?.map(myService => <AddedServiceCard key={myService._id} myService={myService} myAddedService={myAddedService} setMyAddedService={setMyAddedService} ></AddedServiceCard>)}
+            </div>
+            
         </div>
     );
 };

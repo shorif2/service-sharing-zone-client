@@ -67,7 +67,7 @@ console.log(date);
                     </div>
                    <div>
                     {/* The button to open modal */}
-<label htmlFor="my_modal_6" className="btn">open modal</label>
+<label htmlFor="my_modal_6" className="btn">Order Now</label>
 
 {/* Put this part before </body> tag */}
 <input type="checkbox" id="my_modal_6" className="modal-toggle" />
