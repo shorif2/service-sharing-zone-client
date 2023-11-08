@@ -54,7 +54,7 @@ import UpdateService from "../Pages/UpdateService/UpdateService";
           element: <ServiceDetails></ServiceDetails>
         },
         {
-          path: 'update-service',
+          path: 'update-service/:id',
           element: <UpdateService></UpdateService>
         }
       ]
