@@ -1,23 +1,45 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Card = () => {
-const [serviceDetails, setServiceDetails] = useState([])
+    const { user } = useContext(AuthContext)
+    const [serviceDetails, setServiceDetails] = useState([])
     const params = useParams()
-    const {id} = params;
-    
+    const { id } = params;
 
-    useEffect( ()=>{
+
+    useEffect(() => {
         axios.get(`http://localhost:5000/service/${id}`)
-        .then(res => {
-            setServiceDetails(res.data)
-        })
-    },[id])
-console.log(serviceDetails,id);
+            .then(res => {
+                setServiceDetails(res.data)
+            })
+    }, [id])
+    console.log(serviceDetails, id);
 
-const {_id, serviceName} = serviceDetails
+    const { _id, serviceName } = serviceDetails
+
+    const handleSubmit= (e) =>{
+        e.preventDefault()
+        const serviceName = e.target.name.value
+        const email = e.target.email.value
+        const userEmail = e.target.userEmail.value
+        const serviceImage = e.target.serviceImage.value
+        const date = e.target.date.value
+        const area = e.target.area.value
+        const price = e.target.name.value
+
+      const orderInfo = (serviceName, email, userEmail, serviceImage, date, area, price, user);
+
+        axios.post('/order', orderInfo)
+        .then(res => {
+            console.log(res.data);
+        })
+        toast.success('order success')
+    }
 
     return (
         <div className="flex gap-6 mt-16 mb-28">
@@ -37,10 +59,73 @@ const {_id, serviceName} = serviceDetails
                         <p className="text-sm dark:text-gray-400">Eu qualisque aliquando mel, id lorem detraxit nec, ad elit minimum pri. Illum ipsum detracto ne cum. Mundi nemore te ius, vim ad illud atqui apeirian...</p>
                     </div>
                     <div className="flex flex-wrap justify-between">
-                    <button className="self-center px-8 py-3 font-semibold rounded border  border-red-500 text-red-500">Monthly $299</button>
-                    <Link to='/' className="self-center px-8 py-3 font-semibold rounded bg-red-500 text-white">Order Now</Link>
-                        
+                        <button className="self-center px-8 py-3 font-semibold rounded border  border-red-500 text-red-500">Monthly $299</button>
+                        <button className="self-center px-8 py-3 font-semibold rounded bg-red-500 text-white">Order Now</button>
+
                     </div>
+                   <div>
+                    {/* The button to open modal */}
+<label htmlFor="my_modal_6" className="btn">open modal</label>
+
+{/* Put this part before </body> tag */}
+<input type="checkbox" id="my_modal_6" className="modal-toggle" />
+<div className="modal">
+  <div className="modal-box">
+  <form onSubmit={handleSubmit} className=" flex flex-col">
+                <div className="grid gap-4 mb-4 sm:grid-cols-2">
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Name</label>
+                        <input type="text" name="name" defaultValue={user?.displayName} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your name" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provider Email</label>
+                        <input type="text" name="email" defaultValue={user?.email} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your email" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Email</label>
+                        <input type="text" name="userEmail" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="User Email" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Picture URL</label>
+                        <input type="text" name="serviceImage" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Service picture URL" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                        <input type="date" name="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Date" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Servicing Area</label>
+                        <input type="text" name="area" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Service area" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                        <input type="number" name="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                        <select name="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option defaultValue="">Select category</option>
+                            <option value="TV">TV/Monitors</option>
+                            <option value="PC">PC</option>
+                            <option value="GA">Gaming/Console</option>
+                            <option value="PH">Phones</option>
+                        </select>
+                    </div>
+
+                </div>
+                
+                    <button type="submit" className="bg-red-500 text-white  inline-flex items-center   focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">
+                    <svg className="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" ></path></svg>
+                    Add new product
+                </button>
+
+            </form>
+    <div className="modal-action">
+      <label htmlFor="my_modal_6" className="btn">Close!</label>
+    </div>
+  </div>
+</div>
+                   </div>
                 </div>
             </div>
 
