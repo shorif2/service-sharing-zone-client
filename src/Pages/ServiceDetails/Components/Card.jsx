@@ -20,7 +20,8 @@ const Card = () => {
     }, [id])
     console.log(serviceDetails, id);
 
-    const { _id, serviceName } = serviceDetails
+    const { _id, serviceName, price, email, url
+    } = serviceDetails
 
     const handleSubmit= (e) =>{
         e.preventDefault()
@@ -31,10 +32,11 @@ const Card = () => {
         const date = e.target.date.value
         const area = e.target.area.value
         const price = e.target.name.value
+console.log(date);
+      const orderInfo = {serviceName, email, userEmail, serviceImage, date, area, price, user};
+      console.log(orderInfo);
 
-      const orderInfo = (serviceName, email, userEmail, serviceImage, date, area, price, user);
-
-        axios.post('/order', orderInfo)
+        axios.post('http://localhost:5000/order', orderInfo)
         .then(res => {
             console.log(res.data);
         })
@@ -79,15 +81,15 @@ const Card = () => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provider Email</label>
-                        <input type="text" name="email" defaultValue={user?.email} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your email" required />
+                        <input type="text" name="email" defaultValue={email} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type your email" required />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Email</label>
-                        <input type="text" name="userEmail" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="User Email" required />
+                        <input type="text" name="userEmail" defaultValue={user.email} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="User Email" required />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Picture URL</label>
-                        <input type="text" name="serviceImage" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Service picture URL" required />
+                        <input type="text" name="serviceImage" defaultValue={url} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Service picture URL" required />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
@@ -99,9 +101,9 @@ const Card = () => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                        <input type="number" name="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required />
+                        <input type="number" name="price" defaultValue={user.price} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required />
                     </div>
-                    <div>
+                    {/* <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                         <select name="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option defaultValue="">Select category</option>
@@ -110,7 +112,7 @@ const Card = () => {
                             <option value="GA">Gaming/Console</option>
                             <option value="PH">Phones</option>
                         </select>
-                    </div>
+                    </div> */}
 
                 </div>
                 
