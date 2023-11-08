@@ -62,7 +62,6 @@ const Navbar2 = () => {
                         <div className="flex gap-4">
                             <Link to='/' className="font-medium " >Home</Link>
                             <Link to='/services' className="font-medium " >Services</Link>
-                            <Link to='/service-details' className="font-medium " >Service Details</Link>
                         </div>
                         {/* Dropdown */}
                         <div className="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] sm:[--trigger:hover] sm:py-4">

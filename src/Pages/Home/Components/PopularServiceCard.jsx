@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 
 
-const PopularServiceCard = () => {
+const PopularServiceCard = ({popularService}) => {
+
+    const {_id} = popularService;
     return (
         <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md" >
             <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
@@ -32,7 +35,7 @@ const PopularServiceCard = () => {
               </h3>
                 </div>
               <div className="inline-block items-end">
-                        <button
+                        <Link to={`/service-details/${_id}`}
                             className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-pink-500 uppercase align-middle transition-all rounded-lg select-none hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button"
                         >
@@ -51,7 +54,7 @@ const PopularServiceCard = () => {
                                     d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                                 ></path>
                             </svg>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 </div>

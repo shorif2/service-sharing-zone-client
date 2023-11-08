@@ -12,7 +12,7 @@ const Banner = () => {
                             Find The perfect
                         </h2>
                         <h2 className="text-[44px] font-medium">
-                        professional for you
+                        Provider for you need
                         </h2>
                         <h3 className="text-2xl font-medium text-gray-400 mb-6">
                             Get free quotes within minutes

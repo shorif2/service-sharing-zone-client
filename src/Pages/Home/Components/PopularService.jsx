@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider";
 import PopularServiceCard from "./PopularServiceCard";
+import { Link } from "react-router-dom";
 
 const PopularService = () => {
     const  {allService} = useContext(AuthContext)
@@ -17,7 +18,9 @@ const PopularService = () => {
                 allService.map(popularService => <PopularServiceCard key={popularService._id} popularService={popularService}></PopularServiceCard> )
             }
             </div>
-        
+            <div className="flex justify-center items-center py-16 ">
+            <Link to='/services' className="bg-red-500 rounded-lg text-white font-medium py-[14px] px-8 ml-2">Show all Service</Link>
+            </div>
         </div>
     );
 };
