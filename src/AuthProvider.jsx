@@ -21,7 +21,7 @@ const AuthProvider = ({children}) => {
       return ()=> observerRequest()
     },[])
 useEffect(()=>{
-  axios.get('http://localhost:5000/service')
+  axios.get('https://service-sharing-server-eight.vercel.app/service')
   .then(data =>{
     setAllService(data.data);
   })

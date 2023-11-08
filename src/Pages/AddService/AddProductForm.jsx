@@ -22,7 +22,7 @@ const AddProductForm = () => {
         const newService = {name, email, review, url, serviceName, area, price, category, description}
         console.log(newService);
 
-        fetch('http://localhost:5000/service',{
+        fetch('https://service-sharing-server-eight.vercel.app/service',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
