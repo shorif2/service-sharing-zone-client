@@ -9,8 +9,10 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(true)
-    const [allService, setAllService] = useState(null)
-    console.log(allService);
+    const [allService, setAllService] = useState([])
+    const [filterService, setFilterService] = useState([])
+    const [popularService, setPopularService] = useState([])
+    
 
     useEffect(()=>{
 
@@ -24,9 +26,16 @@ useEffect(()=>{
   axios.get('https://service-sharing-server-eight.vercel.app/service')
   .then(data =>{
     setAllService(data.data);
+    const popular = data.data.slice(0, 4)
+    setFilterService(data.data.slice(0, 6))
+    setPopularService(popular)
+    
   })
 },[])
 
+const buttonClicked = ()=> {
+  return setFilterService(allService)
+}
     // Create User
     const createUser = (email, password) =>{
       setLoading(true)
@@ -67,7 +76,10 @@ logout,
 updateUser,
 googleSingIn,
 allService,
-loading
+loading,
+popularService,
+buttonClicked,
+filterService
     }
 
     return (

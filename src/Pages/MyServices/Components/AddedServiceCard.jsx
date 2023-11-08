@@ -19,7 +19,7 @@ const AddedServiceCard = ({ myService, myAddedService, setMyAddedService }) => {
 
     const handleDelete = (id) => {
 
-        axios.delete(`http://localhost:5000/service/${id}`)
+        axios.delete(`https://service-sharing-server-eight.vercel.app/service/${id}`)
             .then(() => {
                 toast.success('Deleted succeed')
             })

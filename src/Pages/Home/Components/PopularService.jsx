@@ -4,8 +4,8 @@ import PopularServiceCard from "./PopularServiceCard";
 import { Link } from "react-router-dom";
 
 const PopularService = () => {
-    const  {allService} = useContext(AuthContext)
-    console.log(allService);
+    const  {popularService} = useContext(AuthContext)
+
     return (
         <div className="py-36">
             <h2 className="text-[44px] font-medium text-center ">Popular Service</h2>
@@ -15,7 +15,7 @@ const PopularService = () => {
         <div className="grid grid-cols-2 gap-6">
                 
                 {
-                allService.map(popularService => <PopularServiceCard key={popularService._id} popularService={popularService}></PopularServiceCard> )
+                popularService.map(popularService => <PopularServiceCard key={popularService._id} popularService={popularService}></PopularServiceCard> )
             }
             </div>
             <div className="flex justify-center items-center py-16 ">

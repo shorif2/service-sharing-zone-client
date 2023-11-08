@@ -11,7 +11,7 @@ const MyBookings = () => {
     const {email} = user;
     console.log(email);
     useEffect(()=>{
-        axios.get(`http://localhost:5000/order/${email}`)
+        axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
         .then(res => setBooking(res.data))
     },[email])
     console.log(booking);

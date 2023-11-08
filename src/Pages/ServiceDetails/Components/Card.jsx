@@ -13,7 +13,7 @@ const Card = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/service/${id}`)
+        axios.get(`https://service-sharing-server-eight.vercel.app/service/${id}`)
             .then(res => {
                 setServiceDetails(res.data)
             })

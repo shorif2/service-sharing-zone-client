@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 
 const Navbar2 = () => {
     const { user, logout } = useContext(AuthContext)
-    console.log(user);
 
     const handleLogout = () => {
         logout()

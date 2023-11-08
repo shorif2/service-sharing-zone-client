@@ -12,7 +12,7 @@ const[ myAddedService, setMyAddedService] = useState([])
 
     const {email} = user;
     useEffect(()=> {
-        axios.get(`http://localhost:5000/addedService?email=${email}`)
+        axios.get(`https://service-sharing-server-eight.vercel.app/addedService?email=${email}`)
     .then(res => 
         setMyAddedService(res.data) )
     },[email])
