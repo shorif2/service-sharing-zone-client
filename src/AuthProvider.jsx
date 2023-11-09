@@ -7,12 +7,14 @@ export const AuthContext = createContext(null)
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true)
     const [allService, setAllService] = useState([])
     const [filterService, setFilterService] = useState([])
     const [popularService, setPopularService] = useState([])
-    
+    const [otherService, setOtherService] = useState([])
+    const [booking, setBooking] = useState([])
+    const  email = user ? user.email : null;
 
     useEffect(()=>{
 
@@ -32,6 +34,24 @@ useEffect(()=>{
     
   })
 },[])
+useEffect(()=> {
+
+  axios.get(`https://service-sharing-server-eight.vercel.app/addedService?email=${email}`)
+.then(res => 
+  setOtherService(res.data))
+  axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
+  .then(res => setBooking(res.data))
+
+
+
+},[email])
+
+
+// useEffect(()=> {
+//   axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
+//   .then(res => setBooking(res.data))
+// },[email])
+
 
 const buttonClicked = ()=> {
   return setFilterService(allService)
@@ -79,7 +99,9 @@ allService,
 loading,
 popularService,
 buttonClicked,
-filterService
+filterService,
+otherService,
+booking
     }
 
     return (

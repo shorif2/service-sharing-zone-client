@@ -1,25 +1,26 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider";
-import axios from "axios";
+
 import BookingCard from "./BookingCard";
 
 
 const MyBookings = () => {
 
-    const {user} = useContext(AuthContext)
-    const [booking, setBooking] = useState([])
-    const {email} = user;
-    console.log(email);
-    useEffect(()=>{
-        axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
-        .then(res => setBooking(res.data))
-    },[email])
+    const {booking} = useContext(AuthContext)
+   
+    // const {email} = user;
+    // console.log(email);
+    // useEffect(()=>{
+    //     axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
+    //     .then(res => setBooking(res.data))
+    // },[email])
     console.log(booking);
     return (
         <div className="">
+            {/*  */}
             <h2 className="text-2xl font-medium text-center">My Bookings</h2>
 
-            <div className="grid grid-cols-3 gap-4 pt-10 pb-28">
+            <div className="grid grid-cols-4 gap-4 pt-10 pb-28">
                 {/* booking  */}
                 {
                     booking.map(booked => <BookingCard key={booked._id} booked={booked}></BookingCard>)

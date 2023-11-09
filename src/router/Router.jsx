@@ -14,6 +14,7 @@ import MySchedules from "../Pages/MySchedules/MySchedules";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import UpdateService from "../Pages/UpdateService/UpdateService";
+import PrivetRouter from "./PrivetRouter";
 
   const router = createBrowserRouter([
     {
@@ -39,23 +40,24 @@ import UpdateService from "../Pages/UpdateService/UpdateService";
         },
         {
         path: 'my-services',
-        element: <MyServices></MyServices>
+        element:<PrivetRouter><MyServices></MyServices></PrivetRouter> ,
+        
         },
         {
         path: 'add-service',
-        element: <AddService></AddService>
+        element: <PrivetRouter><AddService></AddService></PrivetRouter> 
         },
         {
         path: 'my-schedules',
-        element: <MySchedules></MySchedules>
+        element: <PrivetRouter><MySchedules></MySchedules></PrivetRouter> 
         },
         {
           path: 'service-details/:id',
-          element: <ServiceDetails></ServiceDetails>
+          element: <PrivetRouter><ServiceDetails></ServiceDetails></PrivetRouter> 
         },
         {
           path: 'update-service/:id',
-          element: <UpdateService></UpdateService>
+          element: <PrivetRouter><UpdateService></UpdateService></PrivetRouter> 
         }
       ]
     },
