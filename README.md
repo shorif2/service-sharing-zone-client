@@ -17,15 +17,15 @@ Our web site feature:
 - fix the modal
 - hide dashboard menu
 - my schedules/ pending works (last)
-- 404 page animation
-- environment variable
+
 - explore new packages
 - responsive
-- hide the show other services page (optional)
 - website naming
 - do some security with JWT
 
 Optional
+- hide the show other services page (optional)
+- 404 page animation
 - Add a spinner when the data i in a loading state
 - Framer Motion
 - Tan stack query

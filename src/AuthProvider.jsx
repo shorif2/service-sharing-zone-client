@@ -14,6 +14,7 @@ const AuthProvider = ({children}) => {
     const [popularService, setPopularService] = useState([])
     const [otherService, setOtherService] = useState([])
     const [booking, setBooking] = useState([])
+    const [search, setSearch] = useState()
     const  email = user ? user.email : null;
 
     useEffect(()=>{
@@ -41,21 +42,22 @@ useEffect(()=> {
   setOtherService(res.data))
   axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
   .then(res => setBooking(res.data))
-
-
-
 },[email])
 
-
-// useEffect(()=> {
-//   axios.get(`https://service-sharing-server-eight.vercel.app/order/${email}`)
-//   .then(res => setBooking(res.data))
-// },[email])
 
 
 const buttonClicked = ()=> {
   return setFilterService(allService)
 }
+const handleSearch = (e)=>{
+  e.preventDefault()
+const text = e.target.text.value
+setSearch(text);
+const searchItem = allService.filter( item => item.serviceName.includes(search) )
+
+setFilterService(searchItem);
+}
+console.log(search);
     // Create User
     const createUser = (email, password) =>{
       setLoading(true)
@@ -101,7 +103,8 @@ popularService,
 buttonClicked,
 filterService,
 otherService,
-booking
+booking,
+handleSearch
     }
 
     return (

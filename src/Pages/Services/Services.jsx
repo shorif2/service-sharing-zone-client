@@ -1,10 +1,10 @@
 import AllService from "./Components/AllService";
-import SearchBox from "./Components/SearchBox";
+// import SearchBox from "./Components/SearchBox";
 
 const Services = () => {
     return (
         <div>
-           <SearchBox></SearchBox>
+           {/* <SearchBox></SearchBox> */}
            <AllService></AllService>
         </div>
     );
