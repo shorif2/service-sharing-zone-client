@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider";
 import axios from "axios";
 import AddedServiceCard from "./Components/AddedServiceCard";
+import { Helmet } from "react-helmet";
 
 
 const MyServices = () => {
@@ -18,6 +19,11 @@ const[ myAddedService, setMyAddedService] = useState([])
     },[email])
     return (
         <div>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>ServiSwap | My Services</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className="flex justify-center items-center h-[200px] bg-red-500">
             <h2 className="text-3xl text-white font-medium">My Service</h2>
             </div>

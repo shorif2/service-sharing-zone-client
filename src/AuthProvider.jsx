@@ -52,12 +52,10 @@ const buttonClicked = ()=> {
 const handleSearch = (e)=>{
   e.preventDefault()
 const text = e.target.text.value
-setSearch(text);
-const searchItem = allService.filter( item => item.serviceName.includes(search) )
+const searchItem = allService.filter( item => item.serviceName.includes(text) )
 
 setFilterService(searchItem);
 }
-console.log(search);
     // Create User
     const createUser = (email, password) =>{
       setLoading(true)

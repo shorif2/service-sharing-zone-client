@@ -12,6 +12,7 @@ const MainLayout = () => {
     return (
         <div className="container mx-auto">
             {/* <Navbar></Navbar> */}
+            
             <Navbar2></Navbar2>
             <Outlet></Outlet>
             <Footer></Footer>
