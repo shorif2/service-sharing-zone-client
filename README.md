@@ -15,4 +15,12 @@ This is a service sharing website where anyone can take service and share their 
 - Customer booked useful service 
 - User update and delete their added service any time
 
+## Technology
+- HTML
+- CSS
+- Tailwind
+- JS
+- React
+- Firebase
+- MongoDB
 
