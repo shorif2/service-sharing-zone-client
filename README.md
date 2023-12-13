@@ -9,6 +9,8 @@ This is a service sharing website where anyone can take service and share their 
 ## Our web site feature:
 
 - Responsive and clean web view
+- Multi Vendor Offline Service solution
+- Progress Tracking
 - User can search services
 - User can create account here
 - Created user add their own service 
